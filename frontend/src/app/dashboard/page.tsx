@@ -148,7 +148,7 @@ export default function DashboardPage() {
                 { key: 'offer',        label: 'Offer',        color: 'bg-emerald-500' },
                 { key: 'rejected',     label: 'Rejected',     color: 'bg-red-400' },
               ].map(({ key, label, color }) => {
-                const count = appsByStatus[key] ?? 0
+                const count = (appsByStatus as Record<string, number>)[key] ?? 0
                 const total = stats?.total_applications || 1
                 const pct = (count / total) * 100
                 return (
