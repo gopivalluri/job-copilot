@@ -1,3 +1,4 @@
+import os
 """
 Job Application Copilot - FastAPI Backend
 Main application entry point
@@ -11,6 +12,7 @@ from app.api.routes import auth, resume, preferences, jobs, applications, dashbo
 from app.db.session import engine
 from app.models import models  # noqa: F401 - ensure models are imported for table creation
 
+os.makedirs("/tmp/uploads", exist_ok=True)
 app = FastAPI(
     title="Job Application Copilot API",
     description="Smart job search automation for software engineers",
