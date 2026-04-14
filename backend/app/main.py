@@ -40,3 +40,14 @@ app.include_router(dashboard.router,   prefix="/dashboard",    tags=["dashboard"
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "version": "1.0.0"}
+
+
+# Auto-create tables on startup
+from app.db.base import Base
+from app.db.session import engine
+import app.models as _models  # noqa
+try:
+    Base.metadata.create_all(bind=engine)
+    print("✅ Database tables created/verified")
+except Exception as e:
+    print(f"⚠️ DB init error: {e}")
