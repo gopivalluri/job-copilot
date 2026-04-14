@@ -9,7 +9,7 @@ from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from app.core.config import settings
 from app.api.routes import auth, resume, preferences, jobs, applications, dashboard
 from app.db.session import engine
-from app.models import base  # noqa: F401 - ensure models are imported for table creation
+from app.models import models  # noqa: F401 - ensure models are imported for table creation
 
 app = FastAPI(
     title="Job Application Copilot API",
