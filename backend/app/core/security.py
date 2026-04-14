@@ -42,7 +42,7 @@ def decode_access_token(token: str) -> Optional[dict]:
 # Dependency: get current user from token
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     from app.db.session import SessionLocal
-    from app.models.user import User
+    from app.models.models import User
 
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
